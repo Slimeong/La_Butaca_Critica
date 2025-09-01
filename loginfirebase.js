@@ -29,7 +29,7 @@ document.getElementById("btnLogin").addEventListener("click", () => {
     .then((userCredential) => {
       const user = userCredential.user;
       alert("Bienvenido " + user.email);
-      window.location.href = "index.html"; // Redirige al inicio
+      window.location.href = "logeado.html"; // Redirige al inicio
     })
     .catch((error) => {
       alert("Error: " + error.message);
