@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html lang ="es">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>login</title>
-<link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
-<a href="index.html" class="artelibre">
-  <h1>Arte Libre</h1>
-</a>
-<a href="index.html"  class="logear">Inicio</a>
-<hr class="linea">
-<br>
-<div class ="logincontenedor">
-<label for="usuario">INGRESE NOMBRE DE USUARIO </label><br>
-<input type="text" id="usuario" name="usuario" required><br>
-<br><label for="clave">INGRESE CONTRASEÑA</label><br>
-<input type="password" id="clave" name="clave"><br><br>
-<button type="submit" class="iniciar-sesion">Iniciar Sesión</button><br><br>
-<a href="registro.html" class="registro">Olvidaste Tu usuario deseas Registrarte?</a>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-<hr class="linea">
+<body>
+  <a href="index.html" class="artelibre">
+    <h1>Arte Libre</h1>
+  </a>
+  <a href="index.html" class="logear">Inicio</a>
+  <hr class="linea">
+  <br>
+  
+  <div class="logincontenedor">
+    <label for="usuario">INGRESE NOMBRE DE USUARIO</label><br>
+    <input type="text" id="usuario" name="usuario" required><br><br>
+    
+    <label for="clave">INGRESE CONTRASEÑA</label><br>
+    <input type="password" id="clave" name="clave"><br><br>
+    
+    <button id="btnLogin" class="iniciar-sesion">Iniciar Sesión</button><br><br>
+    <a href="registro.html" class="registro">¿Olvidaste tu usuario o deseas registrarte?</a>
+  </div>
+  
+  <hr class="linea">
 
+  <!-- 👉 Importamos la lógica aparte -->
+  <script type="module" src="loginfirebase.js"></script>
+</body>
 </html>
+
+
