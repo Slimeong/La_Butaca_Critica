@@ -8,12 +8,12 @@ import {
 
 // ⚡ Pegá acá tu config real de Firebase
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "basededatos.firebaseapp.com",
-  projectId: "basededatos",
-  storageBucket: "basededatos.appspot.com",
-  messagingSenderId: "NUMERO",
-  appId: "APP_ID"
+  apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
+  authDomain: "usuarios-7cdb5.firebaseapp.com",
+  projectId: "usuarios-7cdb5",
+  storageBucket: "usuarios-7cdb5.firebasestorage.app",
+  messagingSenderId: "1029677443193",
+  appId: "1:1029677443193:web:0019727dd606282a58cca8"
 };
 
 // Inicializar Firebase
