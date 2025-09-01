@@ -12,6 +12,7 @@ h1 {
     text-align: center;
     text-shadow: 2px 2px 0 #0f0, -2px -2px 0 #0f0; /* contorno verde */
     margin-top: 20px;
+    text-decoration: none; 
 }
 
 a.logear {
@@ -146,6 +147,7 @@ a.logincontenedor {
   border: 4px solid; /* define grosor para los 4 lados */
   border-image: linear-gradient(to right, #00f, #0ff) 1;
 }
+
 
 
 
