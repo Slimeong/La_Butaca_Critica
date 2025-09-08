@@ -33,7 +33,7 @@ async function obtenerDatosUsuario() {
 async function mostrarNombre() {
   const datos = await obtenerDatosUsuario();
   const nombre = datos?.nombre || "Invitado";
-  const spanNombre = document.getElementById("nombreUsuario");
+  const spanNombre = document.getElementById("nombre");
   if (spanNombre) spanNombre.textContent = nombre;
 }
 
