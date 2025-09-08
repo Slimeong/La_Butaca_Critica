@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebas
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
-// Configuración de Firebase (igual que en tu registro)
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
   authDomain: "usuarios-7cdb5.firebaseapp.com",
@@ -18,30 +18,24 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-/**
- * Función que obtiene todos los datos del usuario logueado
- * @returns {Promise<Object|null>} - Retorna un objeto con los datos o null si no hay usuario
- */
-export async function obtenerDatosUsuario() {
+// Función para obtener los datos del usuario
+async function obtenerDatosUsuario() {
   const user = auth.currentUser;
   if (!user) return null;
 
-  const uid = user.uid;
-  const docRef = doc(db, "datosusuarios", uid);
+  const docRef = doc(db, "datosusuarios", user.uid);
   const docSnap = await getDoc(docRef);
 
-  if (docSnap.exists()) {
-    return docSnap.data(); // { nombre, email, genero, fechaRegistro }
-  } else {
-    return null;
-  }
+  return docSnap.exists() ? docSnap.data() : null;
 }
 
-/**
- * Función que obtiene solo el nombre del usuario logueado
- * @returns {Promise<string>} - Retorna el nombre o "Invitado" si no hay usuario
- */
-export async function obtenerNombreUsuario() {
+// Función para mostrar el nombre directamente en el HTML
+async function mostrarNombre() {
   const datos = await obtenerDatosUsuario();
-  return datos?.nombre || "Invitado";
+  const nombre = datos?.nombre || "Invitado";
+  const spanNombre = document.getElementById("nombreUsuario");
+  if (spanNombre) spanNombre.textContent = nombre;
 }
+
+// Ejecutar al cargar el script
+mostrarNombre();
