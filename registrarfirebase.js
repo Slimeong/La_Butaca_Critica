@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔧 CONFIGURA TU PROYECTO FIREBASE AQUÍ
+// 🔧 CONFIGURA TU PROYECTO FIREBASE
 const firebaseConfig = {
   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
   authDomain: "usuarios-7cdb5.firebaseapp.com",
@@ -12,8 +12,6 @@ const firebaseConfig = {
   appId: "1:1029677443193:web:0019727dd606282a58cca8"
 };
 
-
-// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -38,19 +36,22 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      // 1️⃣ Crear usuario en Authentication
+      console.log("Intentando registrar usuario...");
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+      console.log("Usuario creado con UID:", user.uid);
 
-      // 2️⃣ Guardar datos en Firestore
+      // Guardar datos en Firestore
       await setDoc(doc(db, "datosusuarios", user.uid), {
-        nombre: Nombre,
-        genero: Genero
+        nombre: nombre,
+        email: email,
+        genero: genero
       });
 
       alert("✅ Usuario registrado correctamente");
-      window.location.href = "index.html"; // Redirige después del registro
+      window.location.href = "index.html";
     } catch (error) {
+      console.error("🔥 Error en el registro:", error);
       alert("❌ Error: " + error.message);
     }
   });
