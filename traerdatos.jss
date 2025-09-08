@@ -1,6 +1,6 @@
 // traerdatos.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 // Configuración de Firebase
@@ -19,23 +19,21 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Función para obtener los datos del usuario
-async function obtenerDatosUsuario() {
-  const user = auth.currentUser;
-  if (!user) return null;
-
-  const docRef = doc(db, "datosusuarios", user.uid);
+async function obtenerDatosUsuario(uid) {
+  const docRef = doc(db, "datosusuarios", uid);
   const docSnap = await getDoc(docRef);
-
   return docSnap.exists() ? docSnap.data() : null;
 }
 
-// Función para mostrar el nombre directamente en el HTML
-async function mostrarNombre() {
-  const datos = await obtenerDatosUsuario();
-  const nombre = datos?.nombre || "Invitado";
+// Mostrar el nombre cuando haya un usuario logueado
+onAuthStateChanged(auth, async (user) => {
   const spanNombre = document.getElementById("nombre");
-  if (spanNombre) spanNombre.textContent = nombre;
-}
+  if (!spanNombre) return;
 
-// Ejecutar al cargar el script
-mostrarNombre();
+  if (user) {
+    const datos = await obtenerDatosUsuario(user.uid);
+    spanNombre.textContent = datos?.nombre || "Invitado";
+  } else {
+    spanNombre.textContent = "Invitado";
+  }
+});
