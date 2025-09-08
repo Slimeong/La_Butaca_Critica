@@ -39,7 +39,7 @@ document.getElementById("btnLogin").addEventListener("click", () => {
 // Detectar si ya hay sesión iniciada
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log("Usuario logueado:", user.email);
+    console.log("Usuario logueado:", user.nombre);
   } else {
     console.log("Nadie logueado");
   }
