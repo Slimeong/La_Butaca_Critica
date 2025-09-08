@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <title>ARTE LIBRE </title>
     <link rel="stylesheet" href="estilos.css">
+    <script type="module" src="traerdatos.js" defer></script>
 </head>
 <body>
 
 
     <h1>LA BUTACA CRÍTICA</h1>
+    <script type="module">
+  import { obtenerNombreUsuario } from "./traerdatos.js";
 
+  async function mostrarNombre() {
+    const nombre = await obtenerNombreUsuario();
+    document.getElementById("nombreUsuario").textContent = nombre;
+  }
+  mostrarNombre();
+</script>
     <hr class="linea">
 
     <nav class="menu">
