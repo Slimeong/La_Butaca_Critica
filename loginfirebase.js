@@ -28,7 +28,7 @@ document.getElementById("btnLogin").addEventListener("click", () => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      alert("Bienvenido " + user.email);
+      alert("Bienvenido " + user.nombre);
       window.location.href = "logeado.html"; // Redirige al inicio
     })
     .catch((error) => {
@@ -39,7 +39,7 @@ document.getElementById("btnLogin").addEventListener("click", () => {
 // Detectar si ya hay sesión iniciada
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log("Usuario logueado:", user.nombre);
+    console.log("Usuario logueado:", user.email);
   } else {
     console.log("Nadie logueado");
   }
