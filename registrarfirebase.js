@@ -2,7 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔧 CONFIGURA TU PROYECTO FIREBASE AQUÍ
 const firebaseConfig = {
   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
   authDomain: "usuarios-7cdb5.firebaseapp.com",
@@ -12,7 +11,6 @@ const firebaseConfig = {
   appId: "1:1029677443193:web:0019727dd606282a58cca8"
 };
 
-// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -23,12 +21,12 @@ window.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Captura de datos (IMPORTANTE: el id correcto es "Nombre", no "nombre")
-    const nombre = document.getElementById("Nombre").value;
+    // ✅ Captura de datos con ids/names correctos
+    const nombre = document.getElementById("nombre").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const password2 = document.getElementById("password2").value;
-    const genero = document.querySelector('input[name="Genero"]:checked')?.value;
+    const genero = document.querySelector('input[name="genero"]:checked')?.value;
 
     if (password !== password2) {
       alert("❌ Las contraseñas no coinciden");
@@ -36,11 +34,11 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      // Crear usuario en Authentication
+      // 1️⃣ Crear usuario en Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Guardar datos en Firestore usando el UID como ID del documento
+      // 2️⃣ Guardar datos en Firestore
       await setDoc(doc(db, "datosusuarios", user.uid), {
         nombre: nombre,
         email: email,
