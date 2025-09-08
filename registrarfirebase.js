@@ -57,6 +57,7 @@ form.addEventListener("submit", async (e) => {
     });
 
     alert("Usuario registrado correctamente!");
+    window.location.href = "index.html";
     form.reset(); // Limpiar formulario
 
   } catch (error) {
