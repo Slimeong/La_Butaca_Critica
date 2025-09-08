@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔧 CONFIGURA TU PROYECTO FIREBASE
+// 🔧 CONFIGURA TU PROYECTO FIREBASE AQUÍ
 const firebaseConfig = {
   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
   authDomain: "usuarios-7cdb5.firebaseapp.com",
@@ -12,6 +12,7 @@ const firebaseConfig = {
   appId: "1:1029677443193:web:0019727dd606282a58cca8"
 };
 
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -22,26 +23,24 @@ window.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Captura de datos
-    const nombre = document.getElementById("nombre").value;
+    // Captura de datos (IMPORTANTE: el id correcto es "Nombre", no "nombre")
+    const nombre = document.getElementById("Nombre").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const password2 = document.getElementById("password2").value;
-    const genero = document.querySelector('input[name="genero"]:checked')?.value;
+    const genero = document.querySelector('input[name="Genero"]:checked')?.value;
 
-    // Validación de contraseñas
     if (password !== password2) {
       alert("❌ Las contraseñas no coinciden");
       return;
     }
 
     try {
-      console.log("Intentando registrar usuario...");
+      // Crear usuario en Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      console.log("Usuario creado con UID:", user.uid);
 
-      // Guardar datos en Firestore
+      // Guardar datos en Firestore usando el UID como ID del documento
       await setDoc(doc(db, "datosusuarios", user.uid), {
         nombre: nombre,
         email: email,
@@ -51,8 +50,9 @@ window.addEventListener("DOMContentLoaded", () => {
       alert("✅ Usuario registrado correctamente");
       window.location.href = "index.html";
     } catch (error) {
-      console.error("🔥 Error en el registro:", error);
       alert("❌ Error: " + error.message);
+      console.error(error);
     }
   });
 });
+
