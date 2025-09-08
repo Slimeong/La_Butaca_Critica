@@ -1,56 +1,65 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+// registrarfirebase.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
+// Configuración de tu proyecto Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
-  authDomain: "usuarios-7cdb5.firebaseapp.com",
-  projectId: "usuarios-7cdb5",
-  storageBucket: "usuarios-7cdb5.firebasestorage.app",
-  messagingSenderId: "1029677443193",
-  appId: "1:1029677443193:web:0019727dd606282a58cca8"
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_AUTH_DOMAIN",
+  projectId: "TU_PROJECT_ID",
+  storageBucket: "TU_STORAGE_BUCKET",
+  messagingSenderId: "TU_MESSAGING_SENDER_ID",
+  appId: "TU_APP_ID"
 };
 
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-window.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("registroForm");
+// Referencia al formulario
+const form = document.getElementById("registroForm");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    // ✅ Captura de datos con ids/names correctos
-    const nombre = document.getElementById("nombre").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const password2 = document.getElementById("password2").value;
-    const genero = document.querySelector('input[name="genero"]:checked')?.value;
+  const nombre = form.nombre.value;
+  const email = form.email.value;
+  const password = form.password.value;
+  const password2 = form.password2.value;
 
-    if (password !== password2) {
-      alert("❌ Las contraseñas no coinciden");
-      return;
-    }
+  const generoRadio = form.querySelector('input[name="genero"]:checked');
+  const genero = generoRadio ? generoRadio.value : null;
 
-    try {
-      // 1️⃣ Crear usuario en Authentication
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+  if (password !== password2) {
+    alert("Las contraseñas no coinciden");
+    return;
+  }
 
-      // 2️⃣ Guardar datos en Firestore
-      await setDoc(doc(db, "datosusuarios", user.uid), {
-        nombre: nombre,
-        email: email,
-        genero: genero
-      });
+  if (!genero) {
+    alert("Por favor selecciona un género");
+    return;
+  }
 
-      alert("✅ Usuario registrado correctamente");
-      window.location.href = "index.html";
-    } catch (error) {
-      alert("❌ Error: " + error.message);
-      console.error(error);
-    }
-  });
+  try {
+    // 1️⃣ Crear usuario en Firebase Auth
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    // 2️⃣ Guardar datos adicionales en Firestore
+    await setDoc(doc(db, "datosusuarios", user.uid), {
+      nombre: nombre,
+      email: email,
+      genero: genero,
+      fechaRegistro: new Date()
+    });
+
+    alert("Usuario registrado correctamente!");
+    form.reset(); // Limpiar formulario
+
+  } catch (error) {
+    console.error("Error registrando usuario:", error);
+    alert("Error: " + error.message);
+  }
 });
-
