@@ -1,4 +1,4 @@
-// traerdatos.js
+// traerNombre.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
@@ -18,36 +18,32 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Función para obtener los datos del usuario desde Firestore usando su UID
-async function obtenerDatosUsuario(uid) {
+/**
+ * Función para obtener el nombre del usuario desde Firestore usando su UID
+ */
+async function obtenerNombre(uid) {
   const docRef = doc(db, "datosusuarios", uid);
   const docSnap = await getDoc(docRef);
-  return docSnap.exists() ? docSnap.data() : null;
+
+  if (docSnap.exists()) {
+    return docSnap.data().nombre; // retorna solo el nombre
+  } else {
+    return null;
+  }
 }
 
-// Función para mostrar los datos del usuario en el HTML
-function mostrarDatosEnHTML(datos) {
-  const spanNombre = document.getElementById("nombre");
-  if (!spanNombre) return;
-
-  spanNombre.textContent = datos?.nombre || "Invitado";
-
-  // Si más adelante quieres mostrar email o género, por ejemplo:
-  const spanEmail = document.getElementById("email");
-  if (spanEmail) spanEmail.textContent = datos?.email || "-";
-
-  const spanGenero = document.getElementById("genero");
-  if (spanGenero) spanGenero.textContent = datos?.genero || "-";
-}
-
-// Detectar cambios de estado de autenticación y mostrar datos
+// Detectar cuando el usuario está logueado
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    const datos = await obtenerDatosUsuario(user.uid);
-    mostrarDatosEnHTML(datos);
+    const nombre = await obtenerNombre(user.uid);
+    // Mostrar en el HTML en el span con id="nombre"
+    const spanNombre = document.getElementById("nombre");
+    if (spanNombre) spanNombre.textContent = nombre || "Invitado";
   } else {
     // Usuario no logueado
-    mostrarDatosEnHTML(null);
+    const spanNombre = document.getElementById("nombre");
+    if (spanNombre) spanNombre.textContent = "Invitado";
   }
 });
+
 
