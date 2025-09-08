@@ -28,7 +28,7 @@ document.getElementById("btnLogin").addEventListener("click", () => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      alert("Bienvenido " + user.nombre);
+      // PARA QUE DIJA BIENVENIDO alert("Bienvenido " + user.nombre);
       window.location.href = "logeado.html"; // Redirige al inicio
     })
     .catch((error) => {
