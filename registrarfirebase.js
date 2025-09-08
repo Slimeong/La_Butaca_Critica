@@ -45,7 +45,6 @@ window.addEventListener("DOMContentLoaded", () => {
       // 2️⃣ Guardar datos en Firestore
       await setDoc(doc(db, "datos_usuarios", user.uid), {
         nombre: Nombre,
-        email: email,
         genero: Genero
       });
 
