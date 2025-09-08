@@ -2,25 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>ARTE LIBRE </title>
+    <title>ARTE LIBRE</title>
     <link rel="stylesheet" href="estilos.css">
-    <script type="module" src="traerdatos.js" defer></script>
 </head>
 <body>
 
-
     <h1>LA BUTACA CRÍTICA</h1>
-    <script type="module">
-  import { obtenerNombreUsuario } from "./traerdatos.js";
+    <p>Bienvenido, <span id="nombreUsuario">Cargando...</span></p>
 
-  async function mostrarNombre() {
-    const nombre = await obtenerNombreUsuario();
-    document.getElementById("nombreUsuario").textContent = nombre;
-  }
-  mostrarNombre();
-</script>
     <hr class="linea">
-
     <nav class="menu">
         <ul>
             <li>Juegos</li>
@@ -49,5 +39,9 @@
         <img src="imagenes/juego.png" alt="Juego de la semana">
     </div>
 
+    <!-- Solo un script para todo -->
+    <script type="module" src="traerdatos.js"></script>
+
 </body>
 </html>
+
