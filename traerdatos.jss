@@ -18,22 +18,36 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Función para obtener los datos del usuario
+// Función para obtener los datos del usuario desde Firestore usando su UID
 async function obtenerDatosUsuario(uid) {
   const docRef = doc(db, "datosusuarios", uid);
   const docSnap = await getDoc(docRef);
   return docSnap.exists() ? docSnap.data() : null;
 }
 
-// Mostrar el nombre cuando haya un usuario logueado
-onAuthStateChanged(auth, async (user) => {
+// Función para mostrar los datos del usuario en el HTML
+function mostrarDatosEnHTML(datos) {
   const spanNombre = document.getElementById("nombre");
   if (!spanNombre) return;
 
+  spanNombre.textContent = datos?.nombre || "Invitado";
+
+  // Si más adelante quieres mostrar email o género, por ejemplo:
+  const spanEmail = document.getElementById("email");
+  if (spanEmail) spanEmail.textContent = datos?.email || "-";
+
+  const spanGenero = document.getElementById("genero");
+  if (spanGenero) spanGenero.textContent = datos?.genero || "-";
+}
+
+// Detectar cambios de estado de autenticación y mostrar datos
+onAuthStateChanged(auth, async (user) => {
   if (user) {
     const datos = await obtenerDatosUsuario(user.uid);
-    spanNombre.textContent = datos?.nombre || "Invitado";
+    mostrarDatosEnHTML(datos);
   } else {
-    spanNombre.textContent = "Invitado";
+    // Usuario no logueado
+    mostrarDatosEnHTML(null);
   }
 });
+
