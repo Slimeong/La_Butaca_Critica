@@ -7,12 +7,12 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 
 /* 1) Config de Firebase - reemplazar con tu propia config */
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_AUTH_DOMAIN",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_STORAGE_BUCKET",
-  messagingSenderId: "TU_MESSAGING_SENDER_ID",
-  appId: "TU_APP_ID"
+   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
+  authDomain: "usuarios-7cdb5.firebaseapp.com",
+  projectId: "usuarios-7cdb5",
+  storageBucket: "usuarios-7cdb5.firebasestorage.app",
+  messagingSenderId: "1029677443193",
+  appId: "1:1029677443193:web:0019727dd606282a58cca8"
 };
 
 const app = initializeApp(firebaseConfig);
