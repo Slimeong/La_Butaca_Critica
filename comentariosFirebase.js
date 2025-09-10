@@ -1,13 +1,14 @@
+// comentariosFirebase.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import {
   getFirestore, collection, addDoc, serverTimestamp,
-  query, where, orderBy, onSnapshot
+  query, where, orderBy, onSnapshot, doc, getDoc
 } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-/* 1) Config de Firebase - reemplazar con tu propia config */
+/* 1) Config de Firebase */
 const firebaseConfig = {
-   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
+  apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
   authDomain: "usuarios-7cdb5.firebaseapp.com",
   projectId: "usuarios-7cdb5",
   storageBucket: "usuarios-7cdb5.firebasestorage.app",
@@ -24,13 +25,14 @@ const form = document.getElementById('comentariosForm');
 const comentariosList = document.getElementById('comentariosList');
 const submitBtn = form.querySelector('button[type="submit"]');
 
-/* Page ID (definido en body data-page-id) */
+/* Page ID */
 const pageId = document.body.dataset.pageId || (location.pathname.split('/').pop().replace('.html','') || 'pagina_desconocida');
 
 /* Usuario actual */
 let currentUser = null;
+let currentUserName = "Anónimo"; // valor por defecto
 
-/* Escapar HTML para evitar XSS al renderizar */
+/* Escapar HTML para evitar XSS */
 function escapeHTML(str = '') {
   return str
     .replaceAll('&','&amp;')
@@ -41,17 +43,24 @@ function escapeHTML(str = '') {
 }
 
 /* 2) Listener de autenticación */
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, async (user) => {
   currentUser = user;
   if (!user) {
-    // Si realmente querés forzar login: redirigir a login aquí.
-    // Por ahora mostramos mensaje en el form
     form.querySelectorAll('*').forEach(n => n.style.display = '');
-    // Opcional: ocultar el form si no está logeado
-    // form.innerHTML = '<p>Debes iniciar sesión para dejar una reseña.</p>';
+    currentUserName = "Invitado";
   } else {
-    // Podés mostrar el nombre en algún lado si querés
-    // console.log('Usuario logeado:', user.email, user.uid);
+    try {
+      const docRef = doc(db, "datosusuarios", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        currentUserName = docSnap.data().nombre || "Sin nombre";
+      } else {
+        currentUserName = user.displayName || "Usuario";
+      }
+    } catch (err) {
+      console.error("Error obteniendo nombre del usuario:", err);
+      currentUserName = user.displayName || "Usuario";
+    }
   }
 });
 
@@ -76,8 +85,7 @@ form.addEventListener('submit', async (e) => {
     await addDoc(collection(db, 'comentarios'), {
       pageId,
       uid: currentUser.uid,
-      displayName: currentUser.displayName || currentUser.email || 'Anónimo',
-      email: currentUser.email || null,
+      nombre: currentUserName,   // 👈 ahora guarda el nombre del usuario de Firestore
       rating,
       comment,
       createdAt: serverTimestamp()
@@ -91,7 +99,7 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-/* 4) Listener en tiempo real: solo trae reseñas para esta página */
+/* 4) Listener en tiempo real */
 const q = query(
   collection(db, 'comentarios'),
   where('pageId', '==', pageId),
@@ -110,7 +118,7 @@ onSnapshot(q, (snapshot) => {
     const div = document.createElement('div');
     div.className = 'reseña';
 
-    const name = escapeHTML(data.displayName || 'Anónimo');
+    const name = escapeHTML(data.nombre || 'Anónimo');
     let dateStr = '';
     if (data.createdAt && typeof data.createdAt.toDate === 'function') {
       dateStr = data.createdAt.toDate().toLocaleString();
@@ -132,3 +140,4 @@ onSnapshot(q, (snapshot) => {
   console.error('Error al leer reseñas:', err);
   comentariosList.innerHTML = '<p>Error cargando reseñas.</p>';
 });
+
