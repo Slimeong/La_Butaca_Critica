@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ARTE LIBRE</title>
+  <link rel="stylesheet" href="estiloss.css">
+</head>
+<body data-page-id="batman"> <!-- <- cambiar por cada página -->
+
+<h1> Reseñas realizadas</h1>
+<section id="comentarios">
+  <h2>Deja tu Reseña</h2>
+  <form id="comentariosForm">
+    <div class="estrellas">
+      <label>
+        <input type="radio" name="calificacion" value="1" />
+        <span class="estrella">😪</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="2" />
+        <span class="estrella">😗</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="3" />
+        <span class="estrella">🙂</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="4" />
+        <span class="estrella">😁</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="5" />
+        <span class="estrella">😎</span>
+      </label>
+    </div>
+
+    <label for="comentario">Descripcion</label>
+    <textarea id="comentario" name="comentario" required></textarea>
+
+    <button type="submit">Enviar Reseña</button>
+  </form>
+
+  <div id="comentariosList">
+    <!-- Aquí se mostrarán las reseñas -->
+  </div>
+</section>
+
+<hr class="linea">
+
+<!-- Agregar el script modular de Firebase: -->
+<script type="module" src="comentariosFirebase.js"></script>
+</body>
+</html>
