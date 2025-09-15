@@ -7,21 +7,30 @@
 </head>
 <body>
 
-    <h1>LA BUTACA CRÍTICA</h1>
+    <header class="encabezado">    
+        <img class="logo" src="/imagenes/logo3.png" alt="Logo">
+         <h1 >LA BUTACA CRÍTICA</h1>  
+    </header>
+    <a href="login.html" class="logear">Logear</a>
+   
     <h1>Bienvenido, <span id="nombreUsuario">Cargando...</span></h1>
 
     <hr class="linea">
     <nav class="menu">
         <ul>
-            <li>Juegos</li>
-            <li>Películas</li>
-            <li>Series</li>
-            <li>Enlaces</li>
+            <li>Inicio</li>
+            <li>Navegar Catalogo</li>
+            <li>Contacto</li>
+            <li>Sobre Nosotros</li>
         </ul>
+        <form class="buscador-menu">
+        <input type="text" placeholder="Buscar..." />
+        <button type="submit">🔍</button>
+    </form>
     </nav>
 
     <div class="descripcion">
-        Esta es una página dedicada al entretenimiento en general: juegos, películas, series, etc.
+        Opiniones que brillan mas allá del crédito final.
     </div>
 
     <hr class="linea">
@@ -32,9 +41,8 @@
         <a href="batman.html"><img src="imagenes/imagen3.png" alt="Batman"></a>
     </div>
 
-    <div class="ver-opcion">Ver</div>
+    
 
-   
 
     <!-- SOLO DEJA ESTE SCRIPT -->
     <script type="module" src="app.js"></script>
