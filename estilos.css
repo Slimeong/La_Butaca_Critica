@@ -45,7 +45,7 @@ h2 {
 }
 
 /* ======== Enlace principal (botón arriba derecha) ======== */
-a.logear {
+.logear {
   position: absolute;
   top: 20px;
   right: 20px;
