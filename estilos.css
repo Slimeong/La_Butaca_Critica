@@ -167,7 +167,7 @@ h2 {
 }
 
 /* ======== Botón "Ver" ======== */
-.ver-opcion {
+/*.ver-opcion {
   text-align: center;
   font-size: 1.2em;
   background-color: var(--color-acento);
@@ -182,7 +182,7 @@ h2 {
 .ver-opcion:hover {
   background-color: var(--color-claro);
   color: var(--color-oscuro);
-}
+}*/
 
 
 
@@ -326,6 +326,7 @@ footer {
 .footer-links a:hover {
   color: #fff;
 }
+
 
 
 
