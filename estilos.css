@@ -245,10 +245,11 @@ h2 {
 }
 
 .encabezado a h1 {
+  position: relative;
   flex: 1;                 
   text-align: center;      
   margin: 0;
-  padding-top: 20px;               
+  top: 20px;               
 }
 
 .logo {
