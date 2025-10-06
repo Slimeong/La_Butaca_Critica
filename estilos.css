@@ -335,6 +335,22 @@ footer {
 .footer-links a:hover {
   color: #fff;
 }
+logearv2 {
+  position: absolute;
+    top: 20px;
+    right: 10px;
+    background-color: #80d8ff; /* celeste */
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: #011e22;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px #888;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+  
+
 
 
 
