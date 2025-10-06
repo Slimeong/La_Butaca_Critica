@@ -1,7 +1,7 @@
 // registrarfirebase.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, query, where, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 // Configuración de tu proyecto Firebase
 const firebaseConfig = {
@@ -12,7 +12,6 @@ const firebaseConfig = {
   messagingSenderId: "1029677443193",
   appId: "1:1029677443193:web:0019727dd606282a58cca8"
 };
-
 
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
@@ -44,11 +43,20 @@ form.addEventListener("submit", async (e) => {
   }
 
   try {
-    //  Crear usuario en Firebase Auth
+    // 🔍 Verificar si el correo ya existe en Firestore (por seguridad extra)
+    const q = query(collection(db, "datosusuarios"), where("email", "==", email));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      alert("Este correo electrónico ya está registrado en la base de datos.");
+      return;
+    }
+
+    // 👤 Crear usuario en Firebase Auth
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    //  Guardar datos adicionales en Firestore
+    // 🗂️ Guardar datos adicionales en Firestore
     await setDoc(doc(db, "datosusuarios", user.uid), {
       nombre: nombre,
       email: email,
@@ -57,11 +65,20 @@ form.addEventListener("submit", async (e) => {
     });
 
     alert("Usuario registrado correctamente!");
-    window.location.href = "index.html";
     form.reset(); // Limpiar formulario
+    window.location.href = "index.html";
 
   } catch (error) {
     console.error("Error registrando usuario:", error);
-    alert("Error: " + error.message);
+
+    if (error.code === "auth/email-already-in-use") {
+      alert("Este correo electrónico ya está registrado. Por favor, usa otro.");
+    } else if (error.code === "auth/invalid-email") {
+      alert("El formato del correo electrónico no es válido.");
+    } else if (error.code === "auth/weak-password") {
+      alert("La contraseña es demasiado débil. Usa una más segura.");
+    } else {
+      alert("Error: " + error.message);
+    }
   }
 });
