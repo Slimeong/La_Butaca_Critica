@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>La Butaca Critica</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header class="encabezado">    
+        <img class="logo" src="imagenes/logo3.png" alt="Logo La butaca critica">
+        
+         <h1 >LA BUTACA CRÍTICA</h1>  
+         
+    </header>
+    
+
+    <hr class="linea">
+    <nav class="menu">
+        <ul>
+  <ul>
+  <li><a href="logeado.html">Inicio</a></li>
+  <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+</ul>
+</ul>
+        <form class="buscador-menu">
+        <input type="text" placeholder="Buscar..." />
+        <button type="submit">🔍</button>
+    </form>
+    </nav>
+
+
+    <div class="descripcion">
+        Opiniones que brillan mas allá del crédito final.
+    </div>
+<div class="sobrenosotros">
+  <p>
+    Este es un proyecto que se realizó junto con la escuela con el fin de crear
+    una página que muestre comentarios y reseñas de determinadas películas,
+    permitiendo a los usuarios compartir sus opiniones, descubrir nuevas
+    producciones y fomentar el pensamiento crítico sobre el cine. Además, busca
+    promover el trabajo colaborativo, la creatividad y el aprendizaje de
+    desarrollo web entre los estudiantes.
+  </p>
+</div>
+    <hr class="linea">
+
+    
+
+    <!-- SOLO DEJA ESTE SCRIPT -->
+    <script type="module" src="app.js"></script>
+    <div id="footer"></div>
+
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+</script>
+</body>
+</html>
