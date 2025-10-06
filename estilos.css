@@ -79,7 +79,7 @@ h2 {
   justify-content: center;
   gap: 30px;
   text-align: center;
-  background-color: var(--color-oscuro);
+  background-color: #0a4540;
   padding: 15px 0;
 }
 
@@ -92,20 +92,27 @@ h2 {
   gap: 30px;
 }
 
-.menu li {
-  background-color: var(--color-claro);
-  color: var(--color-oscuro);
+.menu li a {
+  text-decoration: none;        /* quita el subrayado */
+  color: var(--color-oscuro);   /* mantiene el color original del texto */
+  display: block;               /* ocupa todo el área del botón */
   padding: 10px 20px;
   border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: var(--color-claro);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.menu li:hover {
+/* Efecto hover igual que antes */
+.menu li a:hover {
   background-color: var(--color-acento);
   color: var(--color-fondo);
 }
 
+/* Quitamos fondo/padding del li para que no se duplique el diseño */
+.menu li {
+  padding: 0;
+  background: none;
+}
 .buscador-menu {
     display: flex;
     align-items: center;
@@ -349,14 +356,26 @@ footer {
     text-decoration: none;
 }
 .logearv2:hover{
-    box-shadow: 0 0 15px rgb(229, 255, 0);
+    box-shadow: 0 0 15px #e5ff00;
     transform: scale(1.1);
 }
+.sobrenosotros {
+  width: 75vw; /* ocupa tres cuartos del ancho de la pantalla */
+  background-color: rgb(148, 155, 0);
+  margin: 50px auto; /* centrado horizontal y separación */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  text-align: justify;
+}
 
+.sobrenosotros p {
+  color: white;                /* texto blanco */
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-family: 'Arial', sans-serif;
+}
   
-
-
-
 
 
 
