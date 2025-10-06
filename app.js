@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebas
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
-// ⚠️ Configura Firebase (usa tus credenciales reales)
+// Configuracio de Firebase con credenciales
 const firebaseConfig = {
   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
   authDomain: "usuarios-7cdb5.firebaseapp.com",
@@ -22,7 +22,7 @@ const nombreElemento = document.getElementById("nombreUsuario");
 
 // Detectar si el usuario está autenticado
 onAuthStateChanged(auth, async (user) => {
-  console.log("Usuario detectado:", user); // 👈 Mira la consola del navegador
+  console.log("Usuario detectado:", user); // Mira la consola del navegador
 
   if (user) {
     const uid = user.uid;

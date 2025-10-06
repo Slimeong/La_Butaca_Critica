@@ -6,7 +6,7 @@ import {
   onAuthStateChanged 
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-// ⚡ Pegá acá tu config real de Firebase
+//   config  de Firebase con credenciales
 const firebaseConfig = {
   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
   authDomain: "usuarios-7cdb5.firebaseapp.com",
@@ -28,7 +28,7 @@ document.getElementById("btnLogin").addEventListener("click", () => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      // PARA QUE DIJA BIENVENIDO alert("Bienvenido " + user.nombre);
+      // PARA QUE DIGA BIENVENIDO alert("Bienvenido " + user.nombre);
       window.location.href = "logeado.html"; // Redirige al inicio
     })
     .catch((error) => {

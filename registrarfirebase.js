@@ -44,11 +44,11 @@ form.addEventListener("submit", async (e) => {
   }
 
   try {
-    // 1️⃣ Crear usuario en Firebase Auth
+    //  Crear usuario en Firebase Auth
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
-    // 2️⃣ Guardar datos adicionales en Firestore
+    //  Guardar datos adicionales en Firestore
     await setDoc(doc(db, "datosusuarios", user.uid), {
       nombre: nombre,
       email: email,
