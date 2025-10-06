@@ -335,7 +335,7 @@ footer {
 .footer-links a:hover {
   color: #fff;
 }
-logearv2 {
+.logearv2 {
   position: absolute;
     top: 20px;
     right: 10px;
@@ -348,8 +348,13 @@ logearv2 {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     text-decoration: none;
 }
+.logearv2:hover{
+    box-shadow: 0 0 15px #0ff;
+    transform: scale(1.1);
+}
 
   
+
 
 
 
