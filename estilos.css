@@ -336,24 +336,25 @@ footer {
   color: #fff;
 }
 .logearv2 {
-  position: absolute;
+   position: absolute;
     top: 20px;
     right: 10px;
-    background-color: #80d8ff; /* celeste */
+    background-color: #e6ff80; /* celeste */
     padding: 10px 15px;
     border-radius: 10px;
-    color: #011e22;
+    color: #000000;
     font-weight: bold;
     box-shadow: 2px 2px 5px #888;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     text-decoration: none;
 }
 .logearv2:hover{
-    box-shadow: 0 0 15px #0ff;
+    box-shadow: 0 0 15px rgb(229, 255, 0);
     transform: scale(1.1);
 }
 
   
+
 
 
 
