@@ -1,27 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Titanic - La Butaca Crítica</title>
-    <link rel="stylesheet" href="estilos.css">
+  <meta charset="UTF-8">
+  <title>La Butaca Critica - Titanic</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
+<body data-page-id="titanic">
+<a href="logeado.html" class="logear">Inicio</a>
 
-    <h1>TITANIC</h1>
-    <hr class="linea">
+<main class="contenedor-peliculas">
+    <div class="columna-imagen">
+      <img class="galeria-img" src="imagenes/imagen4.png" alt="Película Titanic">
+    </div>
+    <div class="columna-info">
+      <h1>Titanic (1997)</h1>
+      <h5>La historia de Jack y Rose, dos jóvenes de diferentes clases sociales que se enamoran a bordo del lujoso transatlántico Titanic. Mientras el amor florece, el barco se enfrenta a su fatídico destino tras chocar con un iceberg, desatando tragedia y heroísmo.</h5> 
+    </div>
+</main>
 
-    <div class="descripcion">
-        <p><strong>Titanic</strong> (1997) es una pelicula de romance y tragedia dirigida por James Cameron. Protagonizada por Leonardo DiCaprio y Kate Winslet.</p>
+<section id="comentarios">
+  <h2>Deja tu Reseña</h2>
+  <form id="comentariosForm">
+    <div class="estrellas">
+      <label>
+        <input type="radio" name="calificacion" value="1" />
+        <span class="estrella">😪</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="2" />
+        <span class="estrella">😗</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="3" />
+        <span class="estrella">🙂</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="4" />
+        <span class="estrella">😁</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="5" />
+        <span class="estrella">😎</span>
+      </label>
     </div>
 
-    <div class="galeria">
-        <img src="imagenes/imagen4.png" alt="Titanic">
-    </div>
+    <label for="comentario">Descripcion</label>
+    <textarea id="comentario" name="comentario" required></textarea>
 
-    <div class="ver-opcion">
-        <a href="index.html" style="text-decoration:none; color:inherit;">Volver al inicio</a>
-    </div>
+    <button type="submit">Enviar Reseña</button>
+  </form>
+ <hr class="linea"> <br><br>
+  <div id="comentariosList">
+    <!-- Aquí se mostrarán las reseñas -->
+  </div>
+</section>
 
-    <script type="module" src="app.js"></script>
+<hr class="linea">
+
+<script type="module" src="comentariosFirebase.js"></script>
+<div id="footer"></div>
+
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+</script>
+
 </body>
 </html>
