@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.querySelector(".buscador-menu input");
-  const galeria = document.querySelector(".galeria");
-  const elementos = galeria.querySelectorAll("a");
+  const formular = document.querySelector(".buscador-menu");
+
+  // Evita que el formulario recargue la página al presionar Enter
+  formular.addEventListener("submit", e => e.preventDefault());
+
+  // Selecciona TODAS las galerías y todos los enlaces dentro
+  const elementos = document.querySelectorAll(".galeria a");
 
   // Filtra mientras el usuario escribe
   input.addEventListener("input", () => {
@@ -19,8 +24,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
-  // Evita que el formulario recargue la página al presionar Enter
-  const form = document.querySelector(".buscador-menu");
-  form.addEventListener("submit", e => e.preventDefault());
 });
