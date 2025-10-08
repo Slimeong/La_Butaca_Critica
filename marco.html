@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>La Butaca Critica</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body data-page-id="rambo"> <!-- <- cambiar por cada página -->
+<a href="logeado.html" class="logear">Inicio</a>
+
+
+<main class="contenedor-peliculas">
+    <div class="columna-imagen">
+      <img class="galeria-img" src="imagenes/imagen8.png" alt=" Pelicula Rambo II">
+    </div>
+    <div class="columna-info">
+      <h1>Marco (2022)</h1>
+      <h5>Marco es un joven soñador que vive atrapado entre las expectativas de los demás y su propio deseo de libertad. Cuando una inesperada pérdida lo obliga a replantear su vida, emprende un viaje que lo lleva a descubrir quién es realmente. A través de encuentros, recuerdos y decisiones difíciles, Marco aprenderá que crecer no siempre significa avanzar, sino también saber detenerse y mirar atrás. Una historia sobre la identidad, la soledad y la búsqueda de sentido en un mundo que nunca se detiene.</h5> 
+    </div>
+  </main>
+
+<section id="comentarios">
+  <h2>Deja tu Reseña</h2>
+  <form id="comentariosForm">
+    <div class="estrellas">
+      <label>
+        <input type="radio" name="calificacion" value="1" />
+        <span class="estrella">😪</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="2" />
+        <span class="estrella">😗</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="3" />
+        <span class="estrella">🙂</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="4" />
+        <span class="estrella">😁</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="5" />
+        <span class="estrella">😎</span>
+      </label>
+    </div>
+
+    <label for="comentario">Descripcion</label>
+    <textarea id="comentario" name="comentario" required></textarea>
+
+    <button type="submit">Enviar Reseña</button>
+  </form>
+ <hr class="linea"> <br><br>
+  <div id="comentariosList">
+    <!-- Aquí se mostrarán las reseñas -->
+  </div>
+</section>
+
+<hr class="linea">
+
+<!-- Agregar el script modular de Firebase: -->
+<script type="module" src="comentariosFirebase.js"></script>
+  <div id="footer"></div>
+
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>La Butaca Critica</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body data-page-id="rambo"> <!-- <- cambiar por cada página -->
+<a href="logeado.html" class="logear">Inicio</a>
+
+
+<main class="contenedor-peliculas">
+    <div class="columna-imagen">
+      <img class="galeria-img" src="imagenes/imagen7.png" alt=" Pelicula Rambo II">
+    </div>
+    <div class="columna-info">
+      <h1>Duki: Desde el Fin del Mundo (2023)</h1>
+      <h5>El aclamado artista argentino abre las puertas de su historia en un recorrido íntimo por su vida y su carrera. Desde sus inicios en las batallas de freestyle hasta llenar estadios en todo el continente, Duki muestra el precio del éxito, las presiones de la fama y la búsqueda constante de autenticidad. Con testimonios inéditos, momentos personales y la energía cruda de sus shows, la película retrata a un músico que transformó una generación y llevó el trap argentino a lo más alto. </h5> 
+    </div>
+  </main>
+
+<section id="comentarios">
+  <h2>Deja tu Reseña</h2>
+  <form id="comentariosForm">
+    <div class="estrellas">
+      <label>
+        <input type="radio" name="calificacion" value="1" />
+        <span class="estrella">😪</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="2" />
+        <span class="estrella">😗</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="3" />
+        <span class="estrella">🙂</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="4" />
+        <span class="estrella">😁</span>
+      </label>
+      <label>
+        <input type="radio" name="calificacion" value="5" />
+        <span class="estrella">😎</span>
+      </label>
+    </div>
+
+    <label for="comentario">Descripcion</label>
+    <textarea id="comentario" name="comentario" required></textarea>
+
+    <button type="submit">Enviar Reseña</button>
+  </form>
+ <hr class="linea"> <br><br>
+  <div id="comentariosList">
+    <!-- Aquí se mostrarán las reseñas -->
+  </div>
+</section>
+
+<hr class="linea">
+
+<!-- Agregar el script modular de Firebase: -->
+<script type="module" src="comentariosFirebase.js"></script>
+  <div id="footer"></div>
+
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+</script>
+
+</body>
+</html>
