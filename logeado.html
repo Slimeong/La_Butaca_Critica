@@ -2,67 +2,65 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>La Butaca Critica</title>
+    <title>La Butaca Crítica</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
-
 <body>
 
     <header class="encabezado">    
-        <img class="logo" src="imagenes/logo3.png" alt="Logo La butaca critica">
-        
-         <h1 >LA BUTACA CRÍTICA</h1>  
-         
+        <img class="logo" src="imagenes/logo3.png" alt="Logo La Butaca Crítica">
+        <h1>LA BUTACA CRÍTICA</h1>  
     </header>
     
-   
     <h1>Bienvenido, <span id="nombreUsuario">Cargando...</span></h1>
 
     <hr class="linea">
-    <nav class="menu">
-  <ul>
-    <li><a href="logeado.html">Inicio</a></li>
-    <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
-  </ul>
 
-  <form class="buscador-menu">
-    <input type="text" placeholder="Buscar..." />
-    <button type="submit">🔍</button>
-  </form>
-</nav>
+    <nav class="menu">
+        <ul>
+            <li><a href="logeado.html">Inicio</a></li>
+            <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+        </ul>
+
+        <form class="buscador-menu">
+            <input type="text" placeholder="Buscar..." />
+            <button type="submit">🔍</button>
+        </form>
+    </nav>
 
     <div class="descripcion">
-        Opiniones que brillan mas allá del crédito final.
+        Opiniones que brillan más allá del crédito final.
     </div>
 
     <hr class="linea">
 
     <div class="galeria">
         <a href="rambo.html"><img src="imagenes/imagen1.png" alt="Rambo"></a>
-        <a href="poter.html"><img src="imagenes/imagen2.png" alt="Harry"></a>
+        <a href="poter.html"><img src="imagenes/imagen2.png" alt="Harry Potter"></a>
         <a href="batman.html"><img src="imagenes/imagen3.png" alt="Batman"></a>
         <a href="titanic.html"><img src="imagenes/imagen4.png" alt="Titanic"></a>
     </div>
-      <div class="galeria">
+
+    <div class="galeria">
         <a href="primeorbit.html"><img src="imagenes/imagen6.png" alt="Prime Orbit"></a>
         <a href="duki.html"><img src="imagenes/imagen7.png" alt="Duki"></a>
         <a href="marco.html"><img src="imagenes/imagen8.png" alt="Marco"></a>
         <a href="xeno.html"><img src="imagenes/imagen9.png" alt="Xeno"></a>
     </div>
-    
 
-
-    <!-- SOLO DEJA ESTE SCRIPT -->
-    <script type="module" src="app.js"></script>
     <div id="footer"></div>
 
-<script>
-  fetch("footer.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("footer").innerHTML = data;
-    });
-</script>
-<script src="buscador.js"></script>
+    <!-- Scripts -->
+    <script type="module" src="app.js"></script>
+    <script>
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+    <script src="buscador.js"></script>
+
 </body>
 </html>
+
