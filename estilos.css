@@ -564,15 +564,15 @@ footer {
 }
 .cerrarsesion {
     position: absolute;
-    top: 20px;          /* igual altura que el botón Gonzalo */
-    right: 10px;        /* pegado al borde derecho */
-    background-color: #ffb800;  /* mismo color amarillo */
+    top: 20px;          
+    right: 10px;       
+    background-color: #ffb800; 
     padding: 10px 15px;
     border-radius: 10px;
-    color: #0b3d3a;     /* mismo color de texto que Gonzalo */
+    color: #0b3d3a;     
     font-weight: bold;
-    border: none;       /* sin borde blanco */
-    box-shadow: 0 0 10px #ffb800; /* brillo amarillo */
+    border: none;       
+    box-shadow: 0 0 10px #ffb800; 
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     text-decoration: none;
     cursor: pointer;
@@ -582,6 +582,7 @@ footer {
     box-shadow: 0 0 15px #ffb800;
     transform: scale(1.05);
 }
+
 
 
 
