@@ -6,7 +6,7 @@ import {
   onAuthStateChanged 
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-//   config  de Firebase con credenciales
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCDSY0pY9_TWcx8dnoopWDACNAlFyoH66w",
   authDomain: "usuarios-7cdb5.firebaseapp.com",
@@ -22,17 +22,35 @@ const auth = getAuth(app);
 
 // Cuando hacen clic en "Iniciar Sesión"
 document.getElementById("btnLogin").addEventListener("click", () => {
-  const email = document.getElementById("usuario").value;
-  const password = document.getElementById("clave").value;
+  const email = document.getElementById("usuario").value.trim();
+  const password = document.getElementById("clave").value.trim();
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      // PARA QUE DIGA BIENVENIDO alert("Bienvenido " + user.nombre);
+      alert("Bienvenido " + user.email);
       window.location.href = "logeado.html"; // Redirige al inicio
     })
     .catch((error) => {
-      alert("Error: " + error.message);
+      // Manejo personalizado de errores
+      let mensaje = "";
+      switch (error.code) {
+        case "auth/invalid-email":
+          mensaje = "Formato de correo inválido.";
+          break;
+        case "auth/user-not-found":
+          mensaje = "Correo no registrado.";
+          break;
+        case "auth/wrong-password":
+          mensaje = "Contraseña errónea.";
+          break;
+        case "auth/missing-password":
+          mensaje = "Por favor, ingresa tu contraseña.";
+          break;
+        default:
+          mensaje = "Error: " + error.message;
+      }
+      alert(mensaje);
     });
 });
 
