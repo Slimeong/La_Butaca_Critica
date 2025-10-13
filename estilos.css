@@ -562,6 +562,21 @@ footer {
   background-color: #FFC107;      /* Un amarillo más cálido */
   transform: scale(1.05);
 }
+.cerrarsesion{
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background-color: #ffffff; /* rojo */
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #fffb03; /* borde rojo */
+    box-shadow: 2px 2px 5px #ffffff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
 
 
 
