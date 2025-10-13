@@ -564,8 +564,8 @@ footer {
 }
 .cerrarsesion{
     position: absolute;
-    top: 80px;
-    right: 10px;
+    top: 20px;
+    right: 40px;
     background-color: #ffffff; /* rojo */
     padding: 10px 15px;
     border-radius: 10px;
