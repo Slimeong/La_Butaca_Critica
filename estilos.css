@@ -562,26 +562,35 @@ footer {
   background-color: #FFC107;      /* Un amarillo más cálido */
   transform: scale(1.05);
 }
-.cerrarsesion {
+.usuario {
     position: absolute;
-    top: 20px;          
-    right: 10px;       
-    background-color: #ffb800; 
-    padding: 10px 15px;
-    border-radius: 10px;
-    color: #0b3d3a;     
-    font-weight: bold;
-    border: none;       
-    box-shadow: 0 0 10px #ffb800; 
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    text-decoration: none;
-    cursor: pointer;
+    top: 20px;
+    right: 20px;
+    display: flex;          /* los pone uno al lado del otro xd */
+    align-items: center;
+    gap: 10px;              /* espacio entre los botones =D*/
 }
 
-.cerrarsesion:hover {
-    box-shadow: 0 0 15px #ffb800;
-    transform: scale(1.05);
+.btn-usuario,
+.cerrarsesion {
+    background-color: #ffb800;  /* mismo color */
+    color: #0b3d3a;             /* mismo color de texto */
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 10px #ffb800; /* brillo */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.btn-usuario:hover,
+.cerrarsesion:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ffb800;
+}
+
 
 
 
