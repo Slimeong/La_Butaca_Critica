@@ -42,6 +42,18 @@ h2 {
   font-size: 2em;
 }
 
+/* botones principales (arriba derecha) */
+
+.botones-sesion {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px; /* espacio entre botones */
+  z-index: 20;
+}
+
+
 /* ======== Enlace principal (botón arriba derecha) ======== */
 .logear {
   position: absolute;
@@ -60,6 +72,32 @@ h2 {
 .logear:hover {
   box-shadow: 0 0 15px var(--color-secundario);
   transform: scale(1.1);
+}
+
+/* boton cerrar sesion */ 
+.cerrarsesion{
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    background-color: #ffffff; /* rojo */
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #fffb03; /* borde rojo */
+    box-shadow: 2px 2px 5px #ffffff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+.cerrarsesion:hover {
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+    transform: scale(1.1);
+    border: 3px solid #ffffff; /* borde más grueso al pasar el mouse */
+}
+
+.logear,
+.cerrarsesion {
+  position: static; /*  anula el absolute individual */
 }
 
 /* ======== Separadores ======== */
@@ -480,6 +518,8 @@ footer {
 .footer-links a:hover {
   color: #fff;
 }
+
+/* boton logear e inicio v2 */
 .logearv2 {
    position: absolute;
     top: 20px;
@@ -497,6 +537,8 @@ footer {
     box-shadow: 0 0 15px #e5ff00;
     transform: scale(1.1);
 }
+
+/* pagina "sobre nosotros" */
 .sobrenosotros {
   width: 75vw; /* ocupa tres cuartos del ancho de la pantalla */
   background-color: rgb(148, 155, 0);
@@ -513,6 +555,8 @@ footer {
   line-height: 1.6;
   font-family: 'Arial', sans-serif;
 }
+
+
   .estrellas input[type="radio"] {
   display: none;
 }
@@ -562,25 +606,8 @@ footer {
   background-color: #FFC107;      
   transform: scale(1.05);
 }
-.cerrarsesion{
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    background-color: #ffffff; /* rojo */
-    padding: 10px 15px;
-    border-radius: 10px;
-    color: #000;
-    font-weight: bold;
-    border: 2px solid #fffb03; /* borde rojo */
-    box-shadow: 2px 2px 5px #ffffff;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    text-decoration: none;
-}
-.cerrarsesion:hover {
-    box-shadow: 0 0 15px rgb(255, 255, 255);
-    transform: scale(1.1);
-    border: 3px solid #ffffff; /* borde más grueso al pasar el mouse */
-}
+
+
 
 
 
