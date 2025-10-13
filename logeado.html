@@ -8,15 +8,15 @@
 <body>
     <script type="module" src="autenticador.js"></script>
 
-
     <header class="encabezado">    
         <img class="logo" src="imagenes/logo3.png" alt="Logo La Butaca Crítica">
         <h1>LA BUTACA CRÍTICA</h1>  
+        
+        <!-- 🔹 Contenedores originales -->
+        <div class="logear"><span id="nombreUsuario">Cargando...</span></div>
+        <div class="cerrarsesion"><span id="cerrarsesion">Cerrar sesión</span></div>
     </header>
     
-    <div class= "logear"><span id="nombreUsuario">Cargando...</span></div>
-    <div class="cerrarsesion"><span id ="cerrarsesion">Cerrar sesión</span></div>
-
     <hr class="linea">
 
     <nav class="menu">
@@ -53,7 +53,6 @@
 
     <div id="footer"></div>
 
-    <!-- Scripts -->
     <script type="module" src="app.js"></script>
     <script>
       fetch("footer.html")
@@ -64,8 +63,7 @@
     </script>
     <script src="buscador.js"></script>
     <script type="module" src="cerrarsesion.js"></script>
-
-
 </body>
 </html>
+
 
