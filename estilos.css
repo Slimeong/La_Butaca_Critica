@@ -576,6 +576,13 @@ footer {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     text-decoration: none;
 }
+.cerrarsesion:hover {
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+    transform: scale(1.1);
+    border: 3px solid #ffffff; /* borde más grueso al pasar el mouse */
+}
+
+
 
 
 
