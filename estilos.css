@@ -596,7 +596,7 @@ footer {
 .logear {
     position: absolute;
     top: 20px;
-    right: 150px; /* 🔸 movemos un poco a la izquierda para que no se tape */
+    right: 300px; /* 🔸 movemos un poco a la izquierda para que no se tape */
     background-color: #ffb800;
     color: #0b3d3a;
     border: none;
@@ -629,6 +629,7 @@ footer {
     transform: scale(1.05);
     box-shadow: 0 0 15px #ffb800;
 }
+
 
 
 
