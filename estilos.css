@@ -95,7 +95,7 @@ h2 {
     border: 3px solid #ffffff; /* borde más grueso al pasar el mouse */
 }
 
-.botones-sesion .logear
+.botones-sesion .logear,
 .botones-sesion .cerrarsesion {
   position: static; /* para anular el "absolute" individual */
 }
