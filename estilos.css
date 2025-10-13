@@ -546,8 +546,8 @@ footer {
   margin-bottom: 15px;
 }
 #comentariosForm button[type="submit"] {
-  background-color: #FFD700;      /* Amarillo dorado */
-  color: #000;                    /* Texto negro */
+  background-color: #FFD700;    
+  color: #000;                  
   font-weight: bold;
   border: none;
   border-radius: 8px;
@@ -559,44 +559,22 @@ footer {
 
 /* Efecto hover (cuando pasás el mouse) */
 #comentariosForm button[type="submit"]:hover {
-  background-color: #FFC107;      /* Un amarillo más cálido */
+  background-color: #FFC107;      
   transform: scale(1.05);
 }
-.usuario {
+/* ======== Usuario y Cerrar sesión ======== */
+.usuario-box {
     position: absolute;
     top: 20px;
     right: 20px;
     display: flex;
     align-items: center;
-    gap: 15px; /* 🔹 más espacio entre los botones */
+    gap: 15px; /* espacio entre el nombre y el botón */
+    z-index: 100;
 }
 
-/* Ambos botones comparten estilo */
-.btn-usuario,
-.cerrarsesion {
-    background-color: #ffb800; 
-    color: #0b3d3a; 
-    border: none;
-    border-radius: 10px;
-    padding: 10px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 0 10px #ffb800;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Efecto al pasar el mouse */
-.btn-usuario:hover,
-.cerrarsesion:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #ffb800;
-}
-/* 🔹 Contenedor del nombre del usuario */
+/* Estilo del nombre de usuario */
 .logear {
-    position: absolute;
-    top: 20px;
-    right: 300px; /* 🔸 movemos un poco a la izquierda para que no se tape */
     background-color: #ffb800;
     color: #0b3d3a;
     border: none;
@@ -607,11 +585,8 @@ footer {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 🔹 Botón "Cerrar sesión" */
+/* Estilo del botón "Cerrar sesión" */
 .cerrarsesion {
-    position: absolute;
-    top: 20px;
-    right: 20px; /* 🔸 queda más a la derecha */
     background-color: #ffb800;
     color: #0b3d3a;
     border: none;
@@ -623,12 +598,14 @@ footer {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 🔹 Efectos hover */
+/* Efectos hover */
 .logear:hover,
 .cerrarsesion:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px #ffb800;
 }
+
+
 
 
 
