@@ -562,25 +562,27 @@ footer {
   background-color: #FFC107;      /* Un amarillo más cálido */
   transform: scale(1.05);
 }
-.cerrarsesion{
+.cerrarsesion {
     position: absolute;
-    top: 80px;
-    right: 10px;
-    background-color: #ffffff; /* rojo */
+    top: 20px;          /* igual altura que el botón Gonzalo */
+    right: 10px;        /* pegado al borde derecho */
+    background-color: #ffb800;  /* mismo color amarillo */
     padding: 10px 15px;
     border-radius: 10px;
-    color: #000;
+    color: #0b3d3a;     /* mismo color de texto que Gonzalo */
     font-weight: bold;
-    border: 2px solid #fffb03; /* borde rojo */
-    box-shadow: 2px 2px 5px #ffffff;
+    border: none;       /* sin borde blanco */
+    box-shadow: 0 0 10px #ffb800; /* brillo amarillo */
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     text-decoration: none;
+    cursor: pointer;
 }
+
 .cerrarsesion:hover {
-    box-shadow: 0 0 15px rgb(255, 255, 255);
-    transform: scale(1.1);
-    border: 3px solid #ffffff; /* borde más grueso al pasar el mouse */
+    box-shadow: 0 0 15px #ffb800;
+    transform: scale(1.05);
 }
+
 
 
 
