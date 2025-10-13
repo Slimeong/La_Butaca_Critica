@@ -585,18 +585,13 @@ footer {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Estilo del botón "Cerrar sesión" */
-.cerrarsesion {
-    background-color: #ffb800;
-    color: #0b3d3a;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 10px #ffb800;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+.cerrarsesion:hover {
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+    transform: scale(1.1);
+    border: 3px solid #ffffff; /* borde más grueso al pasar el mouse */
 }
+
 
 /* Efectos hover */
 .logear:hover,
@@ -604,6 +599,7 @@ footer {
     transform: scale(1.05);
     box-shadow: 0 0 15px #ffb800;
 }
+
 
 
 
