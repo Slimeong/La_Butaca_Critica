@@ -566,30 +566,33 @@ footer {
     position: absolute;
     top: 20px;
     right: 20px;
-    display: flex;          /* los pone uno al lado del otro xd */
+    display: flex;
     align-items: center;
-    gap: 10px;              /* espacio entre los botones =D*/
+    gap: 15px; /* 🔹 más espacio entre los botones */
 }
 
+/* Ambos botones comparten estilo */
 .btn-usuario,
 .cerrarsesion {
-    background-color: #ffb800;  /* mismo color */
-    color: #0b3d3a;             /* mismo color de texto */
+    background-color: #ffb800; 
+    color: #0b3d3a; 
     border: none;
     border-radius: 10px;
     padding: 10px 15px;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 0 10px #ffb800; /* brillo */
+    box-shadow: 0 0 10px #ffb800;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Efecto al pasar el mouse */
 .btn-usuario:hover,
 .cerrarsesion:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px #ffb800;
 }
+
 
 
 
