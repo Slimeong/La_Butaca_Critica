@@ -592,6 +592,44 @@ footer {
     transform: scale(1.05);
     box-shadow: 0 0 15px #ffb800;
 }
+/* 🔹 Contenedor del nombre del usuario */
+.logear {
+    position: absolute;
+    top: 20px;
+    right: 150px; /* 🔸 movemos un poco a la izquierda para que no se tape */
+    background-color: #ffb800;
+    color: #0b3d3a;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: bold;
+    box-shadow: 0 0 10px #ffb800;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 🔹 Botón "Cerrar sesión" */
+.cerrarsesion {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* 🔸 queda más a la derecha */
+    background-color: #ffb800;
+    color: #0b3d3a;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ffb800;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 🔹 Efectos hover */
+.logear:hover,
+.cerrarsesion:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ffb800;
+}
+
 
 
 
