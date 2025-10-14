@@ -25,3 +25,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const inputBusqueda = document.getElementById("busquedaNombre");
+  const filtro = document.getElementById("filtroSelect");
+  const imagenes = document.querySelectorAll(".galeria img");
+
+  function filtrarPeliculas() {
+    const texto = inputBusqueda.value.toLowerCase();
+    const generoSeleccionado = filtro.value.toLowerCase();
+
+    imagenes.forEach(img => {
+      const titulo = img.alt.toLowerCase();
+      const genero = img.dataset.genero ? img.dataset.genero.toLowerCase() : "";
+
+      const coincideGenero =
+        generoSeleccionado === "" || genero.includes(generoSeleccionado);
+      const coincideTexto =
+        texto === "" || titulo.includes(texto);
+
+      if (coincideGenero && coincideTexto) {
+        img.parentElement.style.display = "inline-block";
+      } else {
+        img.parentElement.style.display = "none";
+      }
+    });
