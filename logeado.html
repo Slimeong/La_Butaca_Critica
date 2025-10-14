@@ -8,15 +8,14 @@
 <body>
     <script type="module" src="autenticador.js"></script>
 
-
     <header class="encabezado">    
         <img class="logo" src="imagenes/logo3.png" alt="Logo La Butaca Crítica">
         <h1>LA BUTACA CRÍTICA</h1>  
     </header>
     
     <div class="botones-sesion">
-    <div class= "logear"><span id="nombreUsuario">Cargando...</span></div>
-    <div class="cerrarsesion"><span id ="cerrarsesion">Cerrar sesión</span></div>
+        <div class="logear"><span id="nombreUsuario">Cargando...</span></div>
+        <div class="cerrarsesion"><span id="cerrarsesion">Cerrar sesión</span></div>
     </div>
 
     <hr class="linea">
@@ -28,10 +27,24 @@
         </ul>
 
         <form class="buscador-menu">
-            <input type="text" placeholder="Buscar..." />
+            <input type="text" id="busquedaNombre" placeholder="Buscar por nombre..." />
             <button type="submit">🔍</button>
         </form>
     </nav>
+
+    <!-- el filtro de los generos -->
+    <div class="filtro-genero">
+      <label for="filtroSelect">Filtrar por género:</label>
+      <select id="filtroSelect">
+        <option value="">Todos</option>
+        <option value="accion">Acción</option>
+        <option value="romance">Romance</option>
+        <option value="fantasia">Fantasía</option>
+        <option value="drama">Drama</option>
+        <option value="documental">Documental</option>
+        <option value="ciencia ficcion">Ciencia Ficción</option>
+      </select>
+    </div>
 
     <div class="descripcion">
         Opiniones que brillan más allá del crédito final.
@@ -39,18 +52,19 @@
 
     <hr class="linea">
 
+    <!--categorias de peliculas-->
     <div class="galeria">
-        <a href="rambo.html"><img src="imagenes/imagen1.png" alt="Rambo"></a>
-        <a href="poter.html"><img src="imagenes/imagen2.png" alt="Harry Potter"></a>
-        <a href="batman.html"><img src="imagenes/imagen3.png" alt="Batman"></a>
-        <a href="titanic.html"><img src="imagenes/imagen4.png" alt="Titanic"></a>
+        <a href="rambo.html"><img src="imagenes/imagen1.png" alt="Rambo" data-genero="accion"></a>
+        <a href="poter.html"><img src="imagenes/imagen2.png" alt="Harry Potter" data-genero="fantasia"></a>
+        <a href="batman.html"><img src="imagenes/imagen3.png" alt="Batman" data-genero="accion"></a>
+        <a href="titanic.html"><img src="imagenes/imagen4.png" alt="Titanic" data-genero="romance"></a>
     </div>
 
     <div class="galeria">
-        <a href="primeorbit.html"><img src="imagenes/imagen6.png" alt="Prime Orbit"></a>
-        <a href="duki.html"><img src="imagenes/imagen7.png" alt="Duki"></a>
-        <a href="marco.html"><img src="imagenes/imagen8.png" alt="Marco"></a>
-        <a href="xeno.html"><img src="imagenes/imagen9.png" alt="Xeno"></a>
+        <a href="primeorbit.html"><img src="imagenes/imagen6.png" alt="Prime Orbit" data-genero="ciencia ficcion"></a>
+        <a href="duki.html"><img src="imagenes/imagen7.png" alt="Duki" data-genero="documental"></a>
+        <a href="marco.html"><img src="imagenes/imagen8.png" alt="Marco" data-genero="drama"></a>
+        <a href="xeno.html"><img src="imagenes/imagen9.png" alt="Xeno" data-genero="accion"></a>
     </div>
 
     <div id="footer"></div>
@@ -67,10 +81,5 @@
     <script src="buscador.js"></script>
     <script type="module" src="cerrarsesion.js"></script>
 
-
 </body>
 </html>
-
-
-
-
