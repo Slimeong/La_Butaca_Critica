@@ -332,6 +332,12 @@ h2 {
   color: var(--color-secundario);
 }
 
+.columna-info h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
 
 
 #comentarios {
