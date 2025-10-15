@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// buscador.js
 document.addEventListener("DOMContentLoaded", () => {
   const inputBusqueda = document.getElementById("busquedaNombre");
   const filtro = document.getElementById("filtroSelect");
@@ -49,3 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
         img.parentElement.style.display = "none";
       }
     });
+  }
+
+  // eventos
+  inputBusqueda.addEventListener("input", filtrarPeliculas);
+  filtro.addEventListener("change", filtrarPeliculas);
+});
