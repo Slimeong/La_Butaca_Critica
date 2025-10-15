@@ -307,7 +307,7 @@ h2 {
   align-items: flex-start;
   background: rgba(0,0,0,0.10);
   border-radius: 16px;
-  padding: 30px 20px;
+  padding: 10px 10px;
 }
 
 .columna-imagen {
@@ -318,7 +318,7 @@ h2 {
 }
 
 .columna-imagen img {
-  max-width: 220px;
+  max-width: 330px;
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
