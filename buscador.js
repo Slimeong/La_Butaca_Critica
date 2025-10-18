@@ -27,23 +27,48 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 document.addEventListener("DOMContentLoaded", () => {
   const inputBusqueda = document.getElementById("busquedaNombre");
-  const filtro = document.getElementById("filtroSelect");
+  const tipoBusqueda = document.getElementById("tipoBusqueda");
+  const filtroGenero = document.getElementById("filtroSelect");
   const imagenes = document.querySelectorAll(".galeria img");
 
   function filtrarPeliculas() {
-    const texto = inputBusqueda.value.toLowerCase();
-    const generoSeleccionado = filtro.value.toLowerCase();
+    const texto = inputBusqueda.value.toLowerCase().trim();
+    const tipo = tipoBusqueda.value;
+    const generoSeleccionado = filtroGenero.value.toLowerCase();
 
     imagenes.forEach(img => {
-      const titulo = img.alt.toLowerCase();
-      const genero = img.dataset.genero ? img.dataset.genero.toLowerCase() : "";
+      const titulo = img.dataset.titulo?.toLowerCase() || "";
+      const genero = img.dataset.genero?.toLowerCase() || "";
+      const actores = img.dataset.actores?.toLowerCase() || "";
 
-      const coincideGenero =
-        generoSeleccionado === "" || genero.includes(generoSeleccionado);
-      const coincideTexto =
-        texto === "" || titulo.includes(texto);
+      // Verifica coincidencia por tipo
+      let coincideTexto = false;
+      if (texto === "") {
+        coincideTexto = true;
+      } else {
+        switch (tipo) {
+          case "titulo":
+            coincideTexto = titulo.includes(texto);
+            break;
+          case "genero":
+            coincideTexto = genero.includes(texto);
+            break;
+          case "actores":
+            coincideTexto = actores.includes(texto);
+            break;
+          default:
+            coincideTexto =
+              titulo.includes(texto) ||
+              genero.includes(texto) ||
+              actores.includes(texto);
+        }
+      }
 
-      if (coincideGenero && coincideTexto) {
+      // Verifica coincidencia por filtro de género
+      const coincideGenero = generoSeleccionado === "" || genero.includes(generoSeleccionado);
+
+      // Muestra u oculta la imagen
+      if (coincideTexto && coincideGenero) {
         img.parentElement.style.display = "inline-block";
       } else {
         img.parentElement.style.display = "none";
@@ -51,7 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // eventos
+  // Eventos
   inputBusqueda.addEventListener("input", filtrarPeliculas);
-  filtro.addEventListener("change", filtrarPeliculas);
+  tipoBusqueda.addEventListener("change", filtrarPeliculas);
+  filtroGenero.addEventListener("change", filtrarPeliculas);
 });

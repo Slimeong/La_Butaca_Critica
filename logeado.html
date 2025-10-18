@@ -26,10 +26,18 @@
             <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
         </ul>
 
-        <form class="buscador-menu">
-            <input type="text" id="busquedaNombre" placeholder="Buscar por nombre..." />
-            <button type="submit">🔍</button>
-        </form>
+    <form class="buscador-menu" onsubmit="return false;">
+        <input type="text" id="busquedaNombre" placeholder="Buscar..." />
+        <button type="button" id="btnBuscar">🔍</button>
+        <div class="filtro-busqueda">
+            <label for="filtroSelect"> Filtrar por:  </label>
+                <select id="filtroSelect">
+                <option value="todos">Todos</option>
+                <option value="titulo">Título</option>
+                <option value="genero">Género</option>
+                <option value="actores">Actores</option>
+                </select>
+    </form>
     </nav>
 
    
