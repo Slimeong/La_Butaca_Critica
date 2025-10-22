@@ -29,7 +29,7 @@ form.addEventListener("submit", async (e) => {
   const password = form.password.value;
   const password2 = form.password2.value;
 
-  const generoRadio = form.querySelector('input[name="genero"]:checked');
+  const generoRadio = form.querySelector('option[name="genero"]:checked');
   const genero = generoRadio ? generoRadio.value : null;
 
   if (password !== password2) {
