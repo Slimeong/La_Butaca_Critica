@@ -64,6 +64,21 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
+/* Filtro de malas palabras */
+const malasPalabras = [
+  "tonto", "idiota", "estupido", "imbecil", "mierda", "puta",
+  "pendejo", "boludo", "pelotudo", "maldito", "gil", "hdp"
+];
+
+function contieneMalasPalabras(texto) {
+  return malasPalabras.some(palabra => {
+    const regex = new RegExp(`\\b${palabra}\\b`, "i");
+    return regex.test(texto);
+  });
+}
+
+
+
 /* 3) Envío del formulario */
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -76,6 +91,13 @@ form.addEventListener('submit', async (e) => {
   const rating = ratingInput ? parseInt(ratingInput.value, 10) : null;
   const comment = document.getElementById('comentario').value.trim();
 
+  if (contieneMalasPalabras(comment)) {
+  alert("Tu comentario contiene lenguaje inapropiado. Por favor modifícalo antes de enviarlo.");
+  return;
+}
+
+  const comentarioFiltrado = filtrarMalasPalabras(comment);
+
   if (!rating) { alert('Por favor seleccioná una calificación.'); return; }
   if (!comment) { alert('Escribí tu reseña antes de enviar.'); return; }
 
@@ -87,7 +109,7 @@ form.addEventListener('submit', async (e) => {
       uid: currentUser.uid,
       nombre: currentUserName,   // 👈 ahora guarda el nombre del usuario de Firestore
       rating,
-      comment,
+      comment: comentarioFiltrado,
       createdAt: serverTimestamp()
     });
     form.reset();
