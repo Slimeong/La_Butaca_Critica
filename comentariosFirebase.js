@@ -77,11 +77,19 @@ function contieneMalasPalabras(texto) {
   });
 }
 
-
+function filtrarMalasPalabras(texto) {
+  let resultado = texto;
+  malasPalabras.forEach(palabra => {
+    const regex = new RegExp(`\\b${palabra}\\b`, "gi");
+    resultado = resultado.replace(regex, "****");
+  });
+  return resultado;
+}
 
 /* 3) Envío del formulario */
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   if (!currentUser) {
     alert('Debes iniciar sesión para dejar una reseña.');
     return;
@@ -92,9 +100,9 @@ form.addEventListener('submit', async (e) => {
   const comment = document.getElementById('comentario').value.trim();
 
   if (contieneMalasPalabras(comment)) {
-  alert("Tu comentario contiene lenguaje inapropiado. Por favor modifícalo antes de enviarlo.");
-  return;
-}
+    alert("Tu comentario contiene lenguaje inapropiado. Por favor modifícalo antes de enviarlo.");
+    return;
+  }
 
   const comentarioFiltrado = filtrarMalasPalabras(comment);
 
@@ -107,7 +115,7 @@ form.addEventListener('submit', async (e) => {
     await addDoc(collection(db, 'comentarios'), {
       pageId,
       uid: currentUser.uid,
-      nombre: currentUserName,   // 👈 ahora guarda el nombre del usuario de Firestore
+      nombre: currentUserName,
       rating,
       comment: comentarioFiltrado,
       createdAt: serverTimestamp()
@@ -162,4 +170,5 @@ onSnapshot(q, (snapshot) => {
   console.error('Error al leer reseñas:', err);
   comentariosList.innerHTML = '<p>Error cargando reseñas.</p>';
 });
+
 
