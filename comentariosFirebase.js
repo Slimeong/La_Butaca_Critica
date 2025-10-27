@@ -64,32 +64,9 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-/* Filtro de malas palabras */
-const malasPalabras = [
-  "tonto", "idiota", "estupido", "imbecil", "mierda", "puta",
-  "pendejo", "boludo", "pelotudo", "maldito", "gil", "hdp","pene","mulatito"
-];
-
-function contieneMalasPalabras(texto) {
-  return malasPalabras.some(palabra => {
-    const regex = new RegExp(`\\b${palabra}\\b`, "i");
-    return regex.test(texto);
-  });
-}
-
-function filtrarMalasPalabras(texto) {
-  let resultado = texto;
-  malasPalabras.forEach(palabra => {
-    const regex = new RegExp(`\\b${palabra}\\b`, "gi");
-    resultado = resultado.replace(regex, "****");
-  });
-  return resultado;
-}
-
 /* 3) Envío del formulario */
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-
   if (!currentUser) {
     alert('Debes iniciar sesión para dejar una reseña.');
     return;
@@ -98,13 +75,6 @@ form.addEventListener('submit', async (e) => {
   const ratingInput = document.querySelector('input[name="calificacion"]:checked');
   const rating = ratingInput ? parseInt(ratingInput.value, 10) : null;
   const comment = document.getElementById('comentario').value.trim();
-
-  if (contieneMalasPalabras(comment)) {
-    alert("Tu comentario contiene lenguaje inapropiado. Por favor modifícalo antes de enviarlo.");
-    return;
-  }
-
-  const comentarioFiltrado = filtrarMalasPalabras(comment);
 
   if (!rating) { alert('Por favor seleccioná una calificación.'); return; }
   if (!comment) { alert('Escribí tu reseña antes de enviar.'); return; }
@@ -115,9 +85,9 @@ form.addEventListener('submit', async (e) => {
     await addDoc(collection(db, 'comentarios'), {
       pageId,
       uid: currentUser.uid,
-      nombre: currentUserName,
+      nombre: currentUserName,   // 👈 ahora guarda el nombre del usuario de Firestore
       rating,
-      comment: comentarioFiltrado,
+      comment,
       createdAt: serverTimestamp()
     });
     form.reset();
@@ -170,5 +140,6 @@ onSnapshot(q, (snapshot) => {
   console.error('Error al leer reseñas:', err);
   comentariosList.innerHTML = '<p>Error cargando reseñas.</p>';
 });
+
 
 
