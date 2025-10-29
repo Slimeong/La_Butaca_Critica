@@ -67,7 +67,8 @@ onAuthStateChanged(auth, async (user) => {
 /* Filtro de malas palabras */
 const malasPalabras = [
   "tonto", "idiota", "estupido", "imbecil", "mierda", "puta",
-  "pendejo", "boludo", "pelotudo", "maldito", "gil", "hdp","pene","mulatito"
+  "pendejo", "boludo", "pelotudo", "maldito", "gil", "hdp","pene","mulatito","polla",
+  "hijo de puta", "puto", "tarado"
 ];
 
 function contieneMalasPalabras(texto) {
