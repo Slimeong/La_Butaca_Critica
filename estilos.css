@@ -295,7 +295,7 @@ h2 {
 }
 
 .columna-imagen img {
-  max-width: 330px;
+ /* max-width: 330px; */
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -315,6 +315,9 @@ h2 {
   text-align: left;
 }
 
+.columna-info h4 {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, 
+}
 
 
 #comentarios {
@@ -391,6 +394,13 @@ h2 {
 
 .estrellas .estrella:hover {
   transform: scale(1.25);
+}
+
+#promedio-estrellas {
+  font-weight: bold;
+  font-size: 1.1rem;
+ 
+ 
 }
 
 /* ======== Lista de comentarios ======== */
@@ -616,6 +626,27 @@ footer {
   background-color: #ffcf33;
 }
 
+.columna-info .duracion {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-acento);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* ======== Staff (al final de la descripción) ======== */
+.columna-info .staff {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 2px solid var(--color-acento);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-claro);
+}
+
+.columna-info .staff strong {
+  color: var(--color-secundario);
+}
 
 
 
