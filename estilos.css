@@ -520,7 +520,7 @@ footer {
 /* pagina "sobre nosotros" */
 .sobrenosotros {
   width: 75vw; /* ocupa tres cuartos del ancho de la pantalla */
-  background-color: rgb(148, 155, 0);
+  background-color: #0e5e61;
   margin: 50px auto; /* centrado horizontal y separación */
   padding: 30px;
   border-radius: 15px;
