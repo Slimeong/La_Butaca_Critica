@@ -282,7 +282,7 @@ h2 {
   max-width: 1200px;
   margin: 40px auto 0 auto;
   align-items: flex-start;
-  background: rgba(0,0,0,0.10);
+  background: #05292a;
   border-radius: 16px;
   padding: 10px 10px;
 }
