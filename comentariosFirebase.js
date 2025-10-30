@@ -67,8 +67,7 @@ onAuthStateChanged(auth, async (user) => {
 /* Filtro de malas palabras */
 const malasPalabras = [
   "tonto", "idiota", "estupido", "imbecil", "mierda", "puta",
-  "pendejo", "boludo", "pelotudo", "maldito", "gil", "hdp","pene","mulatito","polla",
-  "hijo de puta", "puto", "tarado"
+  "pendejo", "boludo", "pelotudo", "maldito", "gil", "hdp","pene","mulatito"
 ];
 
 function contieneMalasPalabras(texto) {
@@ -78,13 +77,22 @@ function contieneMalasPalabras(texto) {
   });
 }
 
-
-
 /* 3) Envío del formulario */
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   if (!currentUser) {
-    alert('Debes iniciar sesión para dejar una reseña.');
+    Swal.fire({
+      icon: 'warning',
+      title: 'Debes iniciar sesión',
+      text: 'Debes iniciar sesión para dejar una reseña.',
+      confirmButtonText: 'OK',
+      background: "#0a4547",
+      color: "#fff",
+      confirmButtonColor: "#ffb300",
+      cancelButtonColor: "#555",
+      iconColor: "#ffb300",
+    });
     return;
   }
 
@@ -93,14 +101,49 @@ form.addEventListener('submit', async (e) => {
   const comment = document.getElementById('comentario').value.trim();
 
   if (contieneMalasPalabras(comment)) {
-  alert("Tu comentario contiene lenguaje inapropiado. Por favor modifícalo antes de enviarlo.");
-  return;
-}
+    Swal.fire({
+      icon: 'error',
+      title: 'Lenguaje inapropiado',
+      text: 'Tu comentario contiene lenguaje inapropiado. Por favor modifícalo antes de enviarlo.',
+      confirmButtonText: 'OK',
+      background: "#0a4547",
+      color: "#fff",
+      confirmButtonColor: "#ffb300",
+      cancelButtonColor: "#555",
+      iconColor: "#ffb300",
+    });
+    return;
+  }
 
-  const comentarioFiltrado = comment;
+  if (!rating) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Calificación requerida',
+      text: 'Por favor seleccioná una calificación.',
+      confirmButtonText: 'OK',
+      background: "#0a4547",
+      color: "#fff",
+      confirmButtonColor: "#ffb300",
+      cancelButtonColor: "#555",
+      iconColor: "#ffb300",
+    });
+    return;
+  }
 
-  if (!rating) { alert('Por favor seleccioná una calificación.'); return; }
-  if (!comment) { alert('Escribí tu reseña antes de enviar.'); return; }
+  if (!comment) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Comentario vacío',
+      text: 'Escribí tu reseña antes de enviar.',
+      confirmButtonText: 'OK',
+      background: "#0a4547",
+      color: "#fff",
+      onfirmButtonColor: "#ffb300",
+      cancelButtonColor: "#555",
+      iconColor: "#ffb300",
+    });
+    return;
+  }
 
   submitBtn.disabled = true;
 
@@ -108,15 +151,36 @@ form.addEventListener('submit', async (e) => {
     await addDoc(collection(db, 'comentarios'), {
       pageId,
       uid: currentUser.uid,
-      nombre: currentUserName,   // 👈 ahora guarda el nombre del usuario de Firestore
+      nombre: currentUserName,
       rating,
-      comment: comentarioFiltrado,
+      comment,
       createdAt: serverTimestamp()
     });
     form.reset();
+    Swal.fire({
+      icon: 'success',
+      title: '¡Reseña enviada!',
+      text: 'Tu comentario se ha guardado correctamente.',
+      confirmButtonText: 'OK',
+      background: "#0a4547",
+      color: "#fff",
+      confirmButtonColor: "#ffb300",
+      cancelButtonColor: "#555",
+      iconColor: "#ffb300",
+    });
   } catch (err) {
     console.error('Error guardando reseña:', err);
-    alert('Ocurrió un error guardando la reseña: ' + err.message);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Ocurrió un error guardando la reseña: ' + err.message,
+      confirmButtonText: 'OK',
+      background: "#0a4547",
+      color: "#fff",
+      confirmButtonColor: "#ffb300",
+      cancelButtonColor: "#555",
+      iconColor: "#ffb300",
+    });
   } finally {
     submitBtn.disabled = false;
   }
@@ -163,4 +227,3 @@ onSnapshot(q, (snapshot) => {
   console.error('Error al leer reseñas:', err);
   comentariosList.innerHTML = '<p>Error cargando reseñas.</p>';
 });
-

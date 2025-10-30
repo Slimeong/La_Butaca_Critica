@@ -20,7 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Cuando hacen clic en "Iniciar Sesión"
+// Evento click del botón de login
 document.getElementById("btnLogin").addEventListener("click", () => {
   const email = document.getElementById("usuario").value.trim();
   const password = document.getElementById("clave").value.trim();
@@ -28,11 +28,22 @@ document.getElementById("btnLogin").addEventListener("click", () => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      alert("Bienvenido " + user.email);
-      window.location.href = "logeado.html"; // Redirige al inicio
+      Swal.fire({
+        icon: "success",
+        title: "¡Bienvenido!",
+        text: user.email,
+        showConfirmButton: false,
+        timer: 2000,
+        background: "#0a4547",
+        color: "#fff",
+        confirmButtonColor: "#ffb300",
+        cancelButtonColor: "#555",
+        iconColor: "#ffb300",
+      }).then(() => {
+        window.location.href = "logeado.html";
+      });
     })
     .catch((error) => {
-      // Manejo personalizado de errores
       let mensaje = "";
       switch (error.code) {
         case "auth/invalid-email":
@@ -41,16 +52,27 @@ document.getElementById("btnLogin").addEventListener("click", () => {
         case "auth/user-not-found":
           mensaje = "Correo no registrado.";
           break;
-        case "auth/wrong-password":
-          mensaje = "Contraseña errónea.";
+        case "auth/invalid-credential":
+          mensaje = "Contraseña o usuario incorrectos.";
           break;
         case "auth/missing-password":
           mensaje = "Por favor, ingresa tu contraseña.";
           break;
         default:
-          mensaje = "Error: " + error.message;
+          mensaje = "Ha ocurrido un error: " + error.message;
       }
-      alert(mensaje);
+
+      Swal.fire({
+        icon: "error",
+        title: "¡Ups!",
+        text: mensaje,
+        background: "#0a4547",
+        color: "#fff",
+        confirmButtonColor: "#ffb300",
+        cancelButtonColor: "#555",
+        iconColor: "#ffb300",
+        confirmButtonText: "Entendido"
+      });
     });
 });
 
